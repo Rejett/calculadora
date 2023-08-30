@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body{
+  height: 1500px;
+  background: linear-gradient(to top, #151D3B, #D82148);
+}
+
+#borda{
+  max-height: 700px;
+  max-width: 600px;
+  min-height: 700px;
+  min-width: 600px;
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: auto auto;
+  margin-top: 450px;
+  background: linear-gradient(to top, #151D3B, #D82148);
+  box-shadow: 2px 2px 2px 2px hsl(0, 50%, 25%);
+}
+#resultado{
+  background-color: #E1FFEC;
+  margin: auto auto;
+  margin-top: 50px;
+  height: 100px;
+  width: 590px;
+  border: 3px solid black;
+  font-size: 3.5em;
+  text-align: right;
+}
+#numeros{
+  color: white;
+  height: 700px;
+  width: 600px;
+  padding-top: 80px;
+  border: none;
+}
+span{
+  line-height: 120px;
+  display: inline-block;
+  height: 110px;
+  width: 145px;
+  margin: auto;
+  text-align: center;
+  font-size: 3em;
+}
+.botoesesp{
+    background-color:  #D82148;
+}
+.botoesnum{
+    background-color: #151D3B;
+}
+#igual{
+    color: #151D3B;
+    background-color: #E1FFEC;
+}
+    </style>
+</head>
+<body>
+    <div id="borda"> 
+        <input id="resultado"></input>
+        <div id="numeros"> 
+        <span id="divisao" onclick="divisao()" class="botoesesp">÷</span> 
+        <span id="soma" onclick="soma()" class="botoesesp">+</span> 
+        <span id="subtracao" onclick="subtracao()" class="botoesesp">-</span> 
+        <span id="vezes" onclick="vezes()" class="botoesesp">x</span> 
+        <span id="sete" onclick="sete()" class="botoesnum">7</span> 
+        <span id="oito" onclick="oito()" class="botoesnum">8</span> 
+        <span id="nove" onclick="nove()" class="botoesnum">9</span> 
+        <span id="quatro" onclick="quatro()" class="botoesnum">4</span> 
+        <span id="cinco" onclick="cinco()" class="botoesnum">5</span> 
+        <span id="seis" onclick="seis()" class="botoesnum">6</span> 
+        <span id="um" onclick="um()" class="botoesnum">1</span> 
+        <span id="dois" onclick="dois()" class="botoesnum">2</span> 
+        <span id="tres" onclick="tres()" class="botoesnum">3</span> 
+        <span id="zero" onclick="zero()" class="botoesnum">0</span> 
+        <span id="reset" onclick="reset()" class="botoesesp">C</span> 
+        <span id="igual" onclick="igual()">=</span> 
+        </div> 
+  </div> 
+ </body>
+</html>
+</body>
+<script>
+    var resposta = document.getElementById("resultado")
+var resultado = 0
+resultado += Number(resposta.value) 
+var mais = 0
+
+function reset(){
+  resposta.value = ""
+  resultado = 0
+}
+function zero(){
+  let zero = 0
+  resposta.value += zero
+}
+function um(){
+  let um = 1
+  resposta.value += um
+}
+function dois(){
+  let dois = 2
+  resposta.value += dois
+}
+function tres(){
+  let tres = 3
+  resposta.value += tres
+}
+function quatro(){
+  let quatro = 4
+  resposta.value += quatro
+}
+function cinco(){
+  let cinco = 5
+  resposta.value += cinco
+}
+function seis(){
+  let seis = 6
+  resposta.value += seis
+}
+function sete(){
+  let sete = 7
+  resposta.value += sete
+}
+function oito(){
+  let oito = 8
+  resposta.value += oito
+}
+function nove(){
+  let nove = 9
+  resposta.value += nove
+}
+
+function soma(){
+  let ns = document.getElementById("resultado").value
+  let numeros = Number(ns)
+  resultado += numeros
+  resposta.value = ""
+}
+function subtracao(){
+    let ns = document.getElementById("resultado").value
+    let numeros = Number(ns)
+    resultado -= numeros
+    resposta.value = ""    
+}
+function divisao(){
+    var ns =   document.getElementById("resultado").value
+    var numeros = Number(ns)
+    resultado /= numeros
+    resposta.value = ""
+    mais ++
+   
+}
+function vezes(){
+  let ns = document.getElementById("resultado").value
+  let numeros = Number(ns)
+  resultado *= numeros
+  resposta.value = ""
+   
+}
+
+function igual(){
+  var ns =   document.getElementById("resultado").value
+  var numeros = Number(ns)
+  resultado += numeros
+  resposta.value = Math.abs(resultado);
+}
+</script>
+</html>
