@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
     <style>
+      *{
+        margin: 0px;
+        padding: 0px;
+      }
         body{
   height: 1500px;
   background: linear-gradient(to top, #151D3B, #D82148);
 }
-
 #borda{
   max-height: 700px;
   max-width: 600px;
@@ -20,14 +23,14 @@
   margin: auto auto;
   margin-top: 450px;
   background: linear-gradient(to top, #151D3B, #D82148);
-  box-shadow: 2px 2px 2px 2px hsl(0, 50%, 25%);
+  box-shadow: 5px 5px 5px 5px hsla(0, 74%, 6%, 0.418);
 }
 #resultado{
   background-color: #E1FFEC;
   margin: auto auto;
   margin-top: 50px;
   height: 100px;
-  width: 590px;
+  width: 595px;
   border: 3px solid black;
   font-size: 3.5em;
   text-align: right;
@@ -35,7 +38,7 @@
 #numeros{
   color: white;
   height: 700px;
-  width: 600px;
+  width: 620px;
   padding-top: 80px;
   border: none;
 }
@@ -43,7 +46,7 @@ span{
   line-height: 120px;
   display: inline-block;
   height: 110px;
-  width: 145px;
+  width: 147px;
   margin: auto;
   text-align: center;
   font-size: 3em;
@@ -86,11 +89,6 @@ span{
 </html>
 </body>
 <script>
-    var resposta = document.getElementById("resultado")
-var resultado = 0
-resultado += Number(resposta.value) 
-var mais = 0
-
 function reset(){
   resposta.value = ""
   resultado = 0
@@ -135,6 +133,10 @@ function nove(){
   let nove = 9
   resposta.value += nove
 }
+var resposta = document.getElementById("resultado")
+var resultado = Number(resposta.value)
+var maism = 0
+var maisd = 0
 
 function soma(){
   let ns = document.getElementById("resultado").value
@@ -149,26 +151,42 @@ function subtracao(){
     resposta.value = ""    
 }
 function divisao(){
-    var ns =   document.getElementById("resultado").value
-    var numeros = Number(ns)
-    resultado /= numeros
-    resposta.value = ""
-    mais ++
-   
+  let ns = document.getElementById("resultado").value
+  let numeros = Number(ns)
+  resultado += numeros
+  resposta.value = ""
+  maisd ++
+  
 }
 function vezes(){
   let ns = document.getElementById("resultado").value
   let numeros = Number(ns)
-  resultado *= numeros
-  resposta.value = ""
-   
-}
-
-function igual(){
-  var ns =   document.getElementById("resultado").value
-  var numeros = Number(ns)
   resultado += numeros
+  resposta.value = ""
+  maism ++
+}
+function igual(){
+  maisd --
+  maism --
+  
+  var ns1 = document.getElementById("resultado").value
+  var numeros1 = Number(ns1)
+  if(maisd == 0){
+    resultado /= numeros1
+  } else if(maisd != 0){
+    resultado += numeros1
+    maisd = 0
+  }
+  var ns2 = document.getElementById("resultado").value
+  var numeros2 = Number(ns2)
+  if(maism == 0){
+    resultado -= numeros2
+    resultado *= numeros2
+  } else{
+    maism = 0
+  }
   resposta.value = Math.abs(resultado);
+  resultado = 0
 }
 </script>
 </html>
