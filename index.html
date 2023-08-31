@@ -39,15 +39,16 @@
   color: white;
   height: 700px;
   width: 620px;
-  padding-top: 80px;
+  padding-top: 20px;
   border: none;
 }
 span{
   line-height: 120px;
   display: inline-block;
-  height: 110px;
+  height: 100px;
   width: 147px;
   margin: auto;
+  margin-top: 1px;
   text-align: center;
   font-size: 3em;
 }
@@ -73,13 +74,17 @@ span{
         <span id="vezes" onclick="vezes()" class="botoesesp">x</span> 
         <span id="sete" onclick="sete()" class="botoesnum">7</span> 
         <span id="oito" onclick="oito()" class="botoesnum">8</span> 
-        <span id="nove" onclick="nove()" class="botoesnum">9</span> 
+        <span id="nove" onclick="nove()" class="botoesnum">9</span>
+        <span id="raiz" onclick="raiz()" class="botoesesp">x√</span> 
         <span id="quatro" onclick="quatro()" class="botoesnum">4</span> 
         <span id="cinco" onclick="cinco()" class="botoesnum">5</span> 
         <span id="seis" onclick="seis()" class="botoesnum">6</span> 
+        <span id="elevado" onclick="elevado()" class="botoesesp">x²</span>
         <span id="um" onclick="um()" class="botoesnum">1</span> 
         <span id="dois" onclick="dois()" class="botoesnum">2</span> 
         <span id="tres" onclick="tres()" class="botoesnum">3</span> 
+        <span id="ponto" onclick="ponto()" class="botoesesp">.</span>
+        <span id="porcentagem" onclick="porcentagem()" class="botoesesp">%</span>  
         <span id="zero" onclick="zero()" class="botoesnum">0</span> 
         <span id="reset" onclick="reset()" class="botoesesp">C</span> 
         <span id="igual" onclick="igual()">=</span> 
@@ -133,10 +138,16 @@ function nove(){
   let nove = 9
   resposta.value += nove
 }
+function ponto(){
+  let ponto = "."
+  resposta.value += ponto
+}
 var resposta = document.getElementById("resultado")
 var resultado = Number(resposta.value)
 var maism = 0
 var maisd = 0
+var maiss = 0
+var maisp = 0
 
 function soma(){
   let ns = document.getElementById("resultado").value
@@ -147,8 +158,9 @@ function soma(){
 function subtracao(){
     let ns = document.getElementById("resultado").value
     let numeros = Number(ns)
-    resultado -= numeros
-    resposta.value = ""    
+    resultado += numeros
+    resposta.value = "" 
+    maiss ++   
 }
 function divisao(){
   let ns = document.getElementById("resultado").value
@@ -165,10 +177,43 @@ function vezes(){
   resposta.value = ""
   maism ++
 }
+function raiz(){
+  var ns4 = document.getElementById("resultado").value
+  var numeros4 = Number(ns4)
+  if(maisr == 0){
+    const lista = []
+    for(var cont = 1; cont < numeros4; cont ++){
+      lista.push(cont)
+    }
+    for(var n in lista){
+      if(numeros4 == lista[n] * lista[n]){
+        resultado = lista[n]
+      }
+    }
+    resposta.value = resultado
+      if(resultado == 0){
+        resposta.value = "Sem raiz exata"
+      }
+}
+}
+function elevado(){
+  let ns = document.getElementById("resultado").value
+  let numeros = Number(ns)
+  resultado = numeros * numeros
+  resposta.value = resultado
+}
+function porcentagem(){
+  let ns = document.getElementById("resultado").value
+  let numeros = Number(ns)
+  resultado += numeros
+  resposta.value = ""
+  maisp ++
+}
 function igual(){
   maisd --
   maism --
-  
+  maiss --
+  maisp --
   var ns1 = document.getElementById("resultado").value
   var numeros1 = Number(ns1)
   if(maisd == 0){
@@ -185,7 +230,23 @@ function igual(){
   } else{
     maism = 0
   }
-  resposta.value = Math.abs(resultado);
+  var ns3 = document.getElementById("resultado").value
+  var numeros3 = Number(ns3)
+  if(maiss == 0){
+    resultado -= numeros3
+    resultado -= numeros3
+  } else{
+    maiss = 0
+  }
+  var ns4 = document.getElementById("resultado").value
+  var numeros4 = Number(ns4)
+  if(maisp == 0){
+    resultado -= numeros4
+    resultado = (resultado * numeros4) / 100
+  } else{
+    maisp = 0
+  }
+  resposta.value = resultado;
   resultado = 0
 }
 </script>
